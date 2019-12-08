@@ -3,6 +3,7 @@ package app.model;
 import app.entites.User;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,8 +20,23 @@ public class Model {
         model = new ArrayList<>();
     }
 
-    public void add(User user) {
-        model.add(user);
+    public boolean add(User user) {
+        if (!model.contains(user)) {
+            model.add(user);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean remove(String name) {
+        Iterator<User> userIterable = model.iterator();
+        while (userIterable.hasNext()) {
+            if (userIterable.next().getName().equals(name)) {
+                userIterable.remove();
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<String> list() {

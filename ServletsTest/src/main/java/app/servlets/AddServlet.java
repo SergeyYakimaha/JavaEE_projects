@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class AddServlet extends HttpServlet {
     @Override
@@ -24,9 +23,10 @@ public class AddServlet extends HttpServlet {
         String password = req.getParameter("pass");
         User user = new User(name, password);
         Model model = Model.getInstance();
-        model.add(user);
 
+        req.setAttribute("isAddUser", model.add(user));
         req.setAttribute("userName", name);
+
         doGet(req, resp);
     }
 }
