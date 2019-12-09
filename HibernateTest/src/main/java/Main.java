@@ -1,3 +1,5 @@
+import config.AppContext;
+import dao.CauseDAO;
 import entities.Cause;
 import entities.Document;
 import org.hibernate.Session;
@@ -5,31 +7,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure() // configures settings from hibernate.cfg.xml
-                .build();
-        try {
-            SessionFactory sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-            Session session = sessionFactory.openSession();
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(AppContext.class);
 
-            session.beginTransaction();
+        CauseDAO causeDAO = appContext.getBean(CauseDAO.class);
 
-            for (int i = 1; i <= 100 ; i++) {
-                session.save(new Cause(i, 200, "№ " + i));
-            }
+        //causeDAO.insert(10);
 
-            for (int i = 1; i <= 300 ; i++) {
-                session.save(new Document(i, 200));
-            }
-
-            session.getTransaction().commit();
-
-            session.close();
-        } catch (Exception e) {
-            StandardServiceRegistryBuilder.destroy(registry);
-        }
+        System.out.println(causeDAO.get(2));
+//        System.out.println(causeDAO.get(8));
     }
 }

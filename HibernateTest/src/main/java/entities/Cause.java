@@ -5,20 +5,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cause", schema = "public", catalog = "postgres")
 public class Cause {
+
+    @Id
     private int causeid;
     private int orgid;
+    @Access(AccessType.PROPERTY)
     private String causegnum;
 
     public Cause() {
     }
 
-    public Cause(int causeid, int orgid, String causegnum) {
-        this.causeid = causeid;
-        this.orgid = orgid;
-        this.causegnum = causegnum;
-    }
-
-    @Id
     @Column(name = "causeid", nullable = false)
     public int getCauseid() {
         return causeid;
@@ -40,6 +36,7 @@ public class Cause {
 
     @Basic
     @Column(name = "causegnum", nullable = true, length = 255)
+
     public String getCausegnum() {
         return causegnum;
     }
@@ -68,5 +65,14 @@ public class Cause {
         result = 31 * result + orgid;
         result = 31 * result + (causegnum != null ? causegnum.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Cause{" +
+                "causeid=" + causeid +
+                ", orgid=" + orgid +
+                ", causegnum='" + causegnum + '\'' +
+                '}';
     }
 }
