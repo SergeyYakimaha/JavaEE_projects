@@ -15,11 +15,15 @@ public class Main {
 
         CauseDAO causeDAO = appContext.getBean(CauseDAO.class);
 
-        //Cause cause = causeDAO.get(1);
+        Cause cause = causeDAO.get(2);
 
-        System.out.println(causeDAO.get(1));
-        System.out.println(causeDAO.get(2));
-        System.out.println(causeDAO.get(3));
+        for(Document document: cause.getDocuments()) {
+            System.out.println(document);
+        }
+
+//        System.out.println(causeDAO.get(1));
+//        System.out.println(causeDAO.get(2));
+//        System.out.println(causeDAO.get(3));
 
 
 

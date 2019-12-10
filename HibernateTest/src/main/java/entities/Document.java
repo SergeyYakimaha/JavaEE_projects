@@ -42,4 +42,13 @@ public class Document {
     public void setDoctype(Doctype doctype) {
         this.doctype = doctype;
     }
+
+    @Override
+    public String toString() {
+        return "Document{" +
+                "documentid=" + documentid +
+                ", cause=" + cause +
+                ", doctype=" + doctype +
+                '}';
+    }
 }

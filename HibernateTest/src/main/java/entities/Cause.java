@@ -3,6 +3,8 @@ package entities;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "cause")
@@ -28,6 +30,17 @@ public class Cause {
     @OneToOne
     @JoinColumn(name="arbitratorid")
     private Dbuser arbitrator;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cause")
+    private Set<Document> documents = new HashSet<>();
+
+    public Set<Document> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(Set<Document> documents) {
+        this.documents = documents;
+    }
 
     public Dbuser getArbitrator() {
         return arbitrator;
