@@ -3,21 +3,22 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "document", schema = "public", catalog = "postgres")
+@Table(name = "document")
 public class Document {
+    @Id
     private int documentid;
-    private int orgid;
+
+    @ManyToOne
+    @JoinColumn(name = "causeid")
+    private Cause cause;
+
+    @OneToOne
+    @JoinColumn(name = "doctypeid")
+    private Doctype doctype;
 
     public Document() {
     }
 
-    public Document(int documentid, int orgid) {
-        this.documentid = documentid;
-        this.orgid = orgid;
-    }
-
-    @Id
-    @Column(name = "documentid", nullable = false)
     public int getDocumentid() {
         return documentid;
     }
@@ -26,33 +27,19 @@ public class Document {
         this.documentid = documentid;
     }
 
-    @Basic
-    @Column(name = "orgid", nullable = false)
-    public int getOrgid() {
-        return orgid;
+    public Cause getCause() {
+        return cause;
     }
 
-    public void setOrgid(int orgid) {
-        this.orgid = orgid;
+    public void setCause(Cause cause) {
+        this.cause = cause;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Document document = (Document) o;
-
-        if (documentid != document.documentid) return false;
-        if (orgid != document.orgid) return false;
-
-        return true;
+    public Doctype getDoctype() {
+        return doctype;
     }
 
-    @Override
-    public int hashCode() {
-        int result = documentid;
-        result = 31 * result + orgid;
-        return result;
+    public void setDoctype(Doctype doctype) {
+        this.doctype = doctype;
     }
 }

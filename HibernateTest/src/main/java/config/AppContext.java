@@ -2,6 +2,8 @@ package config;
 
 import dao.CauseDAO;
 import dao.CauseDAOImpl;
+import dao.UserDAO;
+import dao.UserDAOImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -28,4 +30,8 @@ public class AppContext {
         return new CauseDAOImpl(sessionFactory());
     }
 
+    @Bean
+    public UserDAO userDAO() {
+        return new UserDAOImpl(sessionFactory());
+    }
 }

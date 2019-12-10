@@ -1,21 +1,50 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Date;
 
 @Entity
-@Table(name = "cause", schema = "public", catalog = "postgres")
+@Table(name = "cause")
 public class Cause {
 
     @Id
     private int causeid;
-    private int orgid;
-    @Access(AccessType.PROPERTY)
+
+    @OneToOne
+    @JoinColumn(name="causestateid")
+    private Causestate causestate;
+
+    @OneToOne
+    @JoinColumn(name="createuser")
+    private Dbuser createuser;
+
+    @OneToOne
+    @JoinColumn(name="changeuser")
+    private Dbuser changeuser;
+
     private String causegnum;
 
-    public Cause() {
+    @OneToOne
+    @JoinColumn(name="arbitratorid")
+    private Dbuser arbitrator;
+
+    public Dbuser getArbitrator() {
+        return arbitrator;
     }
 
-    @Column(name = "causeid", nullable = false)
+    public void setArbitrator(Dbuser arbitrator) {
+        this.arbitrator = arbitrator;
+    }
+
+    public Causestate getCausestate() {
+        return causestate;
+    }
+
+    public void setCausestate(Causestate causestate) {
+        this.causestate = causestate;
+    }
+
     public int getCauseid() {
         return causeid;
     }
@@ -24,18 +53,21 @@ public class Cause {
         this.causeid = causeid;
     }
 
-    @Basic
-    @Column(name = "orgid", nullable = false)
-    public int getOrgid() {
-        return orgid;
+    public Dbuser getCreateuser() {
+        return createuser;
     }
 
-    public void setOrgid(int orgid) {
-        this.orgid = orgid;
+    public void setCreateuser(Dbuser createuser) {
+        this.createuser = createuser;
     }
 
-    @Basic
-    @Column(name = "causegnum", nullable = true, length = 255)
+    public Dbuser getChangeuser() {
+        return changeuser;
+    }
+
+    public void setChangeuser(Dbuser changeuser) {
+        this.changeuser = changeuser;
+    }
 
     public String getCausegnum() {
         return causegnum;
@@ -46,33 +78,14 @@ public class Cause {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Cause that = (Cause) o;
-
-        if (causeid != that.causeid) return false;
-        if (orgid != that.orgid) return false;
-        if (causegnum != null ? !causegnum.equals(that.causegnum) : that.causegnum != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = causeid;
-        result = 31 * result + orgid;
-        result = 31 * result + (causegnum != null ? causegnum.hashCode() : 0);
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "Cause{" +
                 "causeid=" + causeid +
-                ", orgid=" + orgid +
+                ", causestate=" + causestate.getCausestatename() +
+                ", createuser=" + createuser.getUsername() +
+                ", changeuser=" + changeuser.getUsername() +
                 ", causegnum='" + causegnum + '\'' +
+                ", arbitrator=" + arbitrator.getUsername() +
                 '}';
     }
 }
