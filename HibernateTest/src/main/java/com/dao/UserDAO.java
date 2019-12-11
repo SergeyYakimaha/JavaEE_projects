@@ -1,7 +1,6 @@
-package dao;
+package com.dao;
 
-import entities.Cause;
-import entities.Dbuser;
+import com.model.entities.Dbuser;
 
 public interface UserDAO {
     void insert(Dbuser user);

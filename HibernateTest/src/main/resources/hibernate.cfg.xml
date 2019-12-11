@@ -12,11 +12,11 @@
         <property name="show_sql">true</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
 
-        <mapping class="entities.Cause" />
-        <mapping class="entities.Document"/>
-        <mapping class="entities.Dbuser"/>
-        <mapping class="entities.Doctype"/>
-        <mapping class="entities.Causestate"/>
+        <mapping class="com.model.entities.Cause" />
+        <mapping class="com.model.entities.Document"/>
+        <mapping class="com.model.entities.Dbuser"/>
+        <mapping class="com.model.entities.Doctype"/>
+        <mapping class="com.model.entities.Causestate"/>
     </session-factory>
 
 </hibernate-configuration>

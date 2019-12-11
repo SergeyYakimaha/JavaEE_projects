@@ -1,7 +1,6 @@
-package entities;
+package com.model.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "dbuser")

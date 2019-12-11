@@ -1,22 +1,33 @@
 package testgroup.filmography.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import testgroup.filmography.config.AppConfig;
 import testgroup.filmography.model.Film;
 import testgroup.filmography.service.FilmService;
 import testgroup.filmography.service.FilmServiceImpl;
+import testgroup.filmography.testclasses.ListString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class FilmController {
 
     private FilmService filmService;
+
+    @Autowired
+    private List<Integer> integerList;
+
+    @Autowired
+    private ListString listString;
 
     @Autowired
     public void setFilmService(FilmService filmService) {
@@ -29,6 +40,8 @@ public class FilmController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("films");
         modelAndView.addObject("filmsList", films);
+        modelAndView.addObject("iList", integerList);
+        modelAndView.addObject("sList", listString.getList());
         return modelAndView;
     }
 

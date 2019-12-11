@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>FILMS</title>
-        <link href="<c:url value="/res/style.css"/>" rel="stylesheet" type="text/css"/>
+    <!-- <link href="<c:url value="/res/style.css"/>" rel="stylesheet" type="text/css"/>-->
 </head>
 <body>
 
@@ -28,6 +28,22 @@
                 <a href="/edit/${film.id}">edit</a>
                 <a href="/delete/${film.id}">delete</a>
             </td>
+        </tr>
+    </c:forEach>
+</table>
+
+<table>
+    <c:forEach var="value" items="${iList}">
+        <tr>
+            <td>${value}</td>
+        </tr>
+    </c:forEach>
+</table>
+
+<table>
+    <c:forEach var="value" items="${sList}">
+        <tr>
+            <td>${value}</td>
         </tr>
     </c:forEach>
 </table>

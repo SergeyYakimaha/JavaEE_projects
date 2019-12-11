@@ -1,16 +1,13 @@
-package dao;
+package com.dao;
 
-import entities.Cause;
-import entities.Dbuser;
+import com.model.entities.Dbuser;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserDAOImpl implements UserDAO {
+    @Autowired
     private SessionFactory sessionFactory;
-
-    public UserDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     @Override
     public void insert(Dbuser user) {

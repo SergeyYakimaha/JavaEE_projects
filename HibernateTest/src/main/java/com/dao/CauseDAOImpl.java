@@ -1,14 +1,28 @@
-package dao;
+package com.dao;
 
-import entities.Cause;
+import com.model.entities.Cause;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
 public class CauseDAOImpl implements CauseDAO {
+    @Autowired
     private SessionFactory sessionFactory;
 
-    public CauseDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    @Override
+    public List<Cause> getAllCause() {
+        List<Cause> causeList = new ArrayList<>();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sql = "From " + Cause.class.getSimpleName();
+        causeList = session.createQuery(sql).list();
+        session.getTransaction().commit();
+        return causeList;
     }
 
     public void insert(int causeCount) {
@@ -43,5 +57,15 @@ public class CauseDAOImpl implements CauseDAO {
 
     public void update(Cause cause) {
 
+    }
+
+    @Override
+    public Cause getCauseByID(int id) {
+        return null;
+    }
+
+    @Override
+    public Cause getCauseByCauseGNum(String causegnum) {
+        return null;
     }
 }
