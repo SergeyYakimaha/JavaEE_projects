@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="407398fa-92a1-4e31-be68-c6d597f09463" />
+          <unit-entry name="hibernate.cfg.xml" value="c9ee23bf-be20-4db1-9a9a-15b3021c5aaa" />
           <unit-entry name="sessionFactory" />
         </datasource-map>
         <naming-strategy-map />
@@ -23,6 +23,15 @@
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
+      </configuration>
+    </facet>
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping>
+          <factory-entry name="Entities" />
+        </datasource-mapping>
+        <naming-strategy-map />
       </configuration>
     </facet>
   </component>

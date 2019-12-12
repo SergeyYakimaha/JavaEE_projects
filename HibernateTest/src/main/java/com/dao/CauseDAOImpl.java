@@ -19,7 +19,7 @@ public class CauseDAOImpl implements CauseDAO {
         List<Cause> causeList = new ArrayList<>();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String sql = "From " + Cause.class.getSimpleName();
+        String sql = "From " + Cause.class.getSimpleName() + " ORDER BY causeid";
         causeList = session.createQuery(sql).list();
         session.getTransaction().commit();
         return causeList;

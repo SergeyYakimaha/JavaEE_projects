@@ -1,4 +1,5 @@
 import entities.Cause;
+import entities.Document;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -12,10 +13,19 @@ public class Main {
             Session session = sessionFactory.openSession()) {
             session.beginTransaction();
 
-            for (int i = 1; i <= 100; i++) {
-                session.save(new Cause(i,1, "№ " + i));
-            }
+//            Cause cause = session.get(Cause.class, 1);
+//            String causenum = cause.getCausegnum();
+
+
+            Cause cause = new Cause();
+            cause.setCauseid(501);
+            cause.setCausegnum("bbbbb");
+
+            session.save(cause);
+            cause.setCausegnum("501501");
+
             session.getTransaction().commit();
+            session.close();
         }
     }
 }
