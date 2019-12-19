@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
-
-    <!-- add servlet -->
-    <servlet>
-        <servlet-name>add</servlet-name>
-        <servlet-class>app.servlets.AddServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>add</servlet-name>
-        <url-pattern>/add</url-pattern>
-    </servlet-mapping>
-
-    <!-- list servlet -->
-    <servlet>
-        <servlet-name>list</servlet-name>
-        <servlet-class>app.servlets.ListServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>list</servlet-name>
-        <url-pattern>/list</url-pattern>
-    </servlet-mapping>
-
-    <!-- remove servlet -->
-
-    <servlet>
-        <servlet-name>remove</servlet-name>
-        <servlet-class>app.servlets.RemoveServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>remove</servlet-name>
-        <url-pattern>/remove</url-pattern>
-    </servlet-mapping>
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
 </web-app>
