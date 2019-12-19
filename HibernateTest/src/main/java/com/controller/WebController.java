@@ -20,9 +20,16 @@ public class WebController {
     private DocumentService documentService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView getMainPage() {
+    public ModelAndView getLoginPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("main");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView getMainPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
         return modelAndView;
     }
 
