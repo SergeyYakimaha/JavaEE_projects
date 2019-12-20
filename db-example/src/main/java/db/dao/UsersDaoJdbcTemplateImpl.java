@@ -23,7 +23,7 @@ public class UsersDaoJdbcTemplateImpl implements UserDao {
 
     private final String SQL_SELECT_ALL_USER_CARS =
             "SELECT fix_user.id as user_id, fix_user.first_name, fix_user.last_name, fix_car.id as car_id, fix_car.model, fix_car.owner_id " +
-                    "FROM fix_user LEFT JOIN fix_car ON (fix_user.id = fix_car.owner_id)";
+                    "FROM fix_user LEFT JOIN fix_car ON (fix_user.id = fix_car.owner_id) order by fix_user.id";
 
     private Map<Integer, User> usersMap = new HashMap<>();
 
