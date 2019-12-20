@@ -23,8 +23,8 @@ public class UsersServlet extends HttpServlet {
             String dbUrl = properties.getProperty("db.url");
             String dbUsername = properties.getProperty("db.username");
             String dbPassword = properties.getProperty("db.password");
-
             String driverClassName = properties.getProperty("db.driverClassName");
+
             Class.forName(driverClassName);
 
             connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);

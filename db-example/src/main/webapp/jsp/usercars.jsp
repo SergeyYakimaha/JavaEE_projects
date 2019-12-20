@@ -15,12 +15,14 @@
             <th>User ID</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Cars model</th>
         </tr>
-        <c:forEach items="${usersFromServer}" var="user">
+        <c:forEach items="${userListCarMap}" var="entry">
             <tr>
-                <td>${user.id}</td>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
+                <td>${entry.key.id}</td>
+                <td>${entry.key.firstName}</td>
+                <td>${entry.key.lastName}</td>
+                <td>${entry.key.getCarsModel()}</td>
             </tr>
         </c:forEach>
     </table>

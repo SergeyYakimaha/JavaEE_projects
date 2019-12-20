@@ -2,7 +2,7 @@ package db.servlets;
 
 import db.dao.UserDao;
 import db.dao.UsersDaoJdbcTemplateImpl;
-import db.dao.UsersDoaJdbcImpl;
+import db.models.Car;
 import db.models.User;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -13,15 +13,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Properties;
 
-@WebServlet("/users")
-public class UsersServletWithDao extends HttpServlet {
+@WebServlet("/usercars")
+public class UserCarsServlet extends HttpServlet {
     private UserDao userDao;
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Map<User, List<Car>> userListCarMap = new HashMap<>();
+
+        userListCarMap = userDao.FindAllUserAllCars();
+
+        req.setAttribute("userListCarMap", userListCarMap);
+        req.getServletContext().getRequestDispatcher("/jsp/usercars.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+    }
+
     public void init() throws ServletException {
         Properties properties = new Properties();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -45,21 +60,5 @@ public class UsersServletWithDao extends HttpServlet {
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Optional<User> user = userDao.find(1);
-
-        List<User> users = null;
-
-        if (req.getParameter("firstName") != null) {
-            String firstName = req.getParameter("firstName");
-            users = userDao.findAllByFirstName(firstName);
-        } else
-            users = userDao.findAll();
-
-        req.setAttribute("usersFromServer", users);
-        req.getServletContext().getRequestDispatcher("/jsp/users.jsp").forward(req, resp);
     }
 }

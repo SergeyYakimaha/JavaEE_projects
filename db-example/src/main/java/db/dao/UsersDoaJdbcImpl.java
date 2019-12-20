@@ -1,11 +1,13 @@
 package db.dao;
 
+import db.models.Car;
 import db.models.User;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class UsersDoaJdbcImpl implements UserDao {
@@ -33,6 +35,11 @@ public class UsersDoaJdbcImpl implements UserDao {
 
     @Override
     public List<User> findAllByLastName(String lastName) {
+        return null;
+    }
+
+    @Override
+    public Map<User, List<Car>> FindAllUserAllCars() {
         return null;
     }
 
