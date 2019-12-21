@@ -3,14 +3,14 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="form-style-2">
     <div class="form-style-2-heading">
         Already registered!
     </div>
-    <table>
+    <table border="1">
         <tr>
             <th>User ID</th>
             <th>First Name</th>
