@@ -18,9 +18,7 @@ public class Main {
         audi.getNavigationSystem().createRoute();
         audi.getAudioSystem().playRadio();
 
-
         ctx.getBean(Kia.class).move();
-
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("context.xml");
         Audi audi1 = applicationContext.getBean("audi", Audi.class);
