@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/remove")
 public class RemoveServlet extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/remove.jsp");
         requestDispatcher.forward(request, response);
