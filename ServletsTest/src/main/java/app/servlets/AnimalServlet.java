@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/jsp")
-public class JspServlet extends HttpServlet {
-
+@WebServlet("/animal")
+public class AnimalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Animal animal = (Animal)req.getSession().getAttribute("dog");
-        if (!(animal == null))
-            System.out.println(animal.getName());
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/jspPage.jsp");
+        req.setAttribute("cat", new Animal("Вася", "Black"));
+        req.getSession().setAttribute("dog", new Animal("Жулька","White"));
+        req.getServletContext().setAttribute("fish", new Animal("Немо", "синий"));
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/animal.jsp");
         requestDispatcher.forward(req, resp);
     }
 
