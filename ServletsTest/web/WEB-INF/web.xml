@@ -4,4 +4,36 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
    http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
 
+    <servlet>
+        <servlet-name>setAttributes</servlet-name>
+        <servlet-class>app.servlets.SetAttributes</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>setAttributes</servlet-name>
+        <url-pattern>/setAttributes</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listAttributesServlet</servlet-name>
+        <servlet-class>app.servlets.ListParamsServlet</servlet-class>
+        <init-param>
+            <param-name>3</param-name>
+            <param-value>three</param-value>
+        </init-param>
+        <init-param>
+            <param-name>4</param-name>
+            <param-value>four</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listAttributesServlet</servlet-name>
+        <url-pattern>/listAttributes</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextParam</param-name>
+        <param-value>ctx</param-value>
+    </context-param>
+
 </web-app>
