@@ -6,15 +6,20 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>List attributes</title>
 </head>
 <body>
 
-<%--<c:set var="test" value="Dinesh" scope="page" />--%>
+<c:set var="test" value="Cow" scope="page" />
+<c:set var="param1" value="page" scope="page" />
 <% String test = "Fish"; %>
+
+<h3>pageScope.param1 = ${pageScope.param1}</h3>
+<h3>sessionScope.param1 = ${sessionScope.param1}</h3>
+<h3>applicationScope.param1 = ${applicationScope.param1}</h3>
 
 <h2 style="color: cornflowerblue">Cat from attribute</h2>
 <h2>Cat name = ${cat.name}</h2>

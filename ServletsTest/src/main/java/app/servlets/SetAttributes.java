@@ -27,6 +27,10 @@ public class SetAttributes extends HttpServlet {
         req.getServletContext().setAttribute("cat", new Animal("req.getServletContext().setAttribute", "Yellow"));
         req.getServletContext().setAttribute("test", "new");
 
+        req.setAttribute("param1", "param1setAttribute");
+        req.getSession().setAttribute("param1", "param1setSessionAttribute");
+        req.getServletContext().setAttribute("param1", "param1setServletAttribute");
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/listAttributes.jsp");
 
         requestDispatcher.forward(req, resp);

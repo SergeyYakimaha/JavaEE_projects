@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+<web-app
+        xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+        version="4.0">
+
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
 
     <servlet>
         <servlet-name>setAttributes</servlet-name>
@@ -35,5 +40,52 @@
         <param-name>contextParam</param-name>
         <param-value>ctx</param-value>
     </context-param>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/views/jsp/ErrorPage.jsp</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/views/jsp/ExceptionPage.jsp</location>
+    </error-page>
+
+    <jsp-config>
+        <jsp-property-group>
+        <url-pattern>/views/jsp/Content.jsp</url-pattern>
+        <include-prelude>/views/jsp/Header.jsp</include-prelude>
+    </jsp-property-group>
+        <jsp-property-group>
+            <url-pattern>/views/jsp/Content.jsp</url-pattern>
+            <include-coda>/views/jsp/Footer.jsp</include-coda>
+        </jsp-property-group>
+    </jsp-config>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>This is real name</realm-name>
+    </login-config>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>SecureJsp</web-resource-name>
+            <url-pattern>/views/secure/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+    <security-role>
+        <role-name>root</role-name>
+    </security-role>
+    <security-role>
+        <role-name>test</role-name>
+    </security-role>
+
 
 </web-app>
