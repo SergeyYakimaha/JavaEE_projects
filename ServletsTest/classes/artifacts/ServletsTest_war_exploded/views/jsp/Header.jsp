@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Content</title>
+    <title>Header</title>
 </head>
 <body>
-    My content
+<h1 style="color: darkcyan">This is Header</h1>
 </body>
 </html>
