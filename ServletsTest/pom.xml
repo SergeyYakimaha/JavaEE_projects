@@ -7,6 +7,8 @@
     <groupId>myTestProject</groupId>
     <artifactId>ServletsTest</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
     <build>
         <plugins>
             <plugin>
@@ -50,5 +52,13 @@
         </dependency>
 
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Internal repo</name>
+            <url>C:\Program Files\Apache Software Foundation\Tomcat 8.5\webapps</url>
+        </repository>
+    </distributionManagement>
 
 </project>
