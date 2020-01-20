@@ -1,5 +1,3 @@
-import shop.test.TestRest;
-
 import javax.ws.rs.core.Application;
 import java.util.Collections;
 import java.util.HashSet;
@@ -12,7 +10,6 @@ public class App extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new HashSet<Class<?>>();
-        resources.add(TestRest.class);
         return Collections.unmodifiableSet(resources);
     }
 }
