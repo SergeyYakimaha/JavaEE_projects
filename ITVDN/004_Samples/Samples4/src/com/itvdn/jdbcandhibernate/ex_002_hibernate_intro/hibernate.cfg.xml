@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name = "hibernate.dialect">
+            org.hibernate.dialect.PostgreSQLDialect
+        </property>
+
+        <property name = "hibernate.connection.driver_class">
+            org.postgresql.Driver
+        </property>
+
+        <property name = "hibernate.connection.url">
+            jdbc:postgresql://localhost/postgres
+        </property>
+
+        <property name = "hibernate.connection.username">
+            postgres
+        </property>
+
+        <property name = "hibernate.connection.password">
+            admin
+        </property>
+        
+        <property name="connection.pool_size">
+            1
+        </property>
+        
+        <!--<property name="cache.provider_class">
+            org.hibernate.cache.NoCacheRegionFactoryAvailableException
+        </property>-->
+
+        <property name="hbm2ddl.auto">create</property>
+
+        <property name="show_sql">true</property>
+
+
+        <mapping class="com.itvdn.jdbcandhibernate.ex_002_hibernate_intro.ClientsDetails" />
+
+
+    </session-factory>
+
+</hibernate-configuration>

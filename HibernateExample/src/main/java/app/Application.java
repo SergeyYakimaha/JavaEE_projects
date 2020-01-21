@@ -1,27 +1,25 @@
 package app;
 
+
+import models.Cause;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 
 public class Application {
 
     public static void main(String[] args) throws IOException {
-        Configuration configuration = new Configuration();
-        Properties properties = new Properties();
+        Cause cause = new Cause(4, 1, 1, 1, "N4", 2);
 
-        properties.load(Application.class.getClassLoader().getResourceAsStream("hibernate.properties"));
+        SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
-        configuration.setProperties(properties);
-        configuration.addResource("User.hbm.xml");
-
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-
+        Session session = factory.openSession();
+        session.beginTransaction();
+        session.save(cause);
+        session.getTransaction().commit();
+        session.close();
     }
+
 }
