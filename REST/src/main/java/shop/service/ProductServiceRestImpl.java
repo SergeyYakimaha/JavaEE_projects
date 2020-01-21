@@ -61,7 +61,7 @@ public class ProductServiceRestImpl {
 	public Product productDetails(@PathParam("id") long id) throws ProductNotAvailableException {
 		ProductLine product = store.get(id);
 		if (product == null) {
-			throw new ProductNotAvailableException("Не допустимый id: " + id);
+			throw new ProductNotAvailableException("РџСЂРѕРґСѓРєС‚ РЅРµ РЅР°Р№РґРµРЅ id: " + id);
 		}
 		return product.getProduct();
 	}

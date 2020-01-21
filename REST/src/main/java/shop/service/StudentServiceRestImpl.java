@@ -15,6 +15,12 @@ import java.util.List;
 @Path("students")
 public class StudentServiceRestImpl {
 
+    @GET
+    @Path("test")
+    public Response getTest() {
+        return Response.ok("Test successful").build();
+    }
+
     @POST
     @Path("/image")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -78,6 +84,22 @@ public class StudentServiceRestImpl {
     public StudentList getStudentList() {
         College college = new College();
         return college.searchByAge(20);
+    }
+
+    @GET
+    @Path("student/{id}")
+    @Produces({MediaType.APPLICATION_XML})
+    public Student getStudentList(@PathParam("id") int id) {
+        College college = new College();
+        return college.gerStudentById(id);
+    }
+
+    @GET
+    @Path("student/response/{id}")
+    @Produces({MediaType.APPLICATION_XML})
+    public Response getStudentByIdFromResponce(@PathParam("id") int id) {
+        College college = new College();
+        return Response.ok().entity(college.gerStudentById(id)).build();
     }
 
     @GET
