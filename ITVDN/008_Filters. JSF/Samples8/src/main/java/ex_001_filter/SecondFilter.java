@@ -1,0 +1,33 @@
+package ex_001_filter;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
+import java.io.IOException;
+import java.util.Enumeration;
+
+@WebFilter(urlPatterns = {"/home"},
+        filterName = "filter_second",
+        initParams = {
+        @WebInitParam(name = "SecondFilter_web_param", value = "3333"),
+})
+public class SecondFilter implements Filter {
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+        System.out.println("init SecondFilter filter");
+//        Enumeration<String> params = filterConfig.getInitParameterNames();
+//
+//        while (params.hasMoreElements()) {
+//            String element = params.nextElement();
+//            System.out.println(element + " " + filterConfig.getInitParameter(element));
+//        }
+    }
+
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("doFilter SecondFilter filter");
+    }
+
+    public void destroy() {
+
+    }
+}
