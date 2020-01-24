@@ -28,14 +28,13 @@ public class FirstFilter implements Filter {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("doFilter FirstFilter filter");
 
         List<String> listFilters = (ArrayList<String>)servletRequest.getAttribute("filters");
 
-        if (listFilters == null) {
+        if (listFilters == null)
             listFilters = new ArrayList<String>();
-        } else
-            listFilters.add("FirstFilter");
+
+        listFilters.add("FirstFilter was used");
 
         servletRequest.setAttribute("filters", listFilters);
 

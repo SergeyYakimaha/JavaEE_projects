@@ -27,18 +27,17 @@ public class SecondFilter implements Filter {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("doFilter SecondFilter filter");
 
         List<String> listFilters = (ArrayList<String>)servletRequest.getAttribute("filters");
 
-        if (listFilters == null) {
+        if (listFilters == null)
             listFilters = new ArrayList<String>();
-            } else
-            listFilters.add("SecondFilter");
+
+        listFilters.add("SecondFilter was used");
 
         servletRequest.setAttribute("filters", listFilters);
 
-        filterChain.doFilter(servletRequest, servletResponse);
+        //filterChain.doFilter(servletRequest, servletResponse);
     }
 
     public void destroy() {

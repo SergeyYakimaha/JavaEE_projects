@@ -5,17 +5,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-@WebServlet(urlPatterns = "/filters")
-public class controller extends HttpServlet {
+@WebServlet("/filters")
+public class FilterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<String> strings = (ArrayList<String>)req.getAttribute("filters");
-
-
+        //req.getRequestDispatcher("/111").forward(req, resp);
+        HttpSession session = req.getSession();
+        session.setAttribute("sessionFilterList", req.getAttribute("filters"));
+        resp.sendRedirect("/111");
     }
 }
