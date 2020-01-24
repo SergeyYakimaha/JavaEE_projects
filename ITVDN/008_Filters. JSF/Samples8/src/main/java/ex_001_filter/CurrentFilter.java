@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 import java.util.Enumeration;
 
-@WebFilter(filterName = "filter_current")
+@WebFilter(filterName = "filter_current", urlPatterns = "/home")
 public class CurrentFilter implements Filter {
 
     private boolean status;

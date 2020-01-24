@@ -56,11 +56,17 @@
 
     <filter-mapping>
         <filter-name>filter_first</filter-name>
-        <url-pattern>/home/*</url-pattern>
+        <url-pattern>/filters</url-pattern>
     </filter-mapping>
+
     <filter-mapping>
         <filter-name>filter_second</filter-name>
-        <url-pattern>/home/*</url-pattern>
+        <url-pattern>/filters</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>filter_third</filter-name>
+        <url-pattern>/filters</url-pattern>
     </filter-mapping>
 
     <servlet>
