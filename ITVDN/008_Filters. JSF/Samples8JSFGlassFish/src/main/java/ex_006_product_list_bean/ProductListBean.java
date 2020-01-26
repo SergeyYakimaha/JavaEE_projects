@@ -28,13 +28,24 @@ public class ProductListBean implements Serializable {
        products.add(p3);
     }
 
+    private Product getProduct(Product product) {
+        return products.get(products.indexOf(product));
+    }
+
     public List<Product> getProducts() {
         return products;
     }
 
-
     public void add(Product product) {
         products.add(product);
+    }
+
+    public void edit(Product product) {
+        Product product1 = getProduct(product);
+        if (product != null) {
+            product1.setName(product.getName());
+            product1.setPrice(product.getPrice());
+        }
     }
 
 }

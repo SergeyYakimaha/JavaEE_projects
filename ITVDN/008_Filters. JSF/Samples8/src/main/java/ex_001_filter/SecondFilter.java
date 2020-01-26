@@ -37,7 +37,7 @@ public class SecondFilter implements Filter {
 
         servletRequest.setAttribute("filters", listFilters);
 
-        //filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     public void destroy() {

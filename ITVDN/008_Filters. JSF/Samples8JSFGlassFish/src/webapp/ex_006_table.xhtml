@@ -29,6 +29,9 @@
             <h:column>
                 <h:outputText value="#{current.price}" />
             </h:column>
+            <h:column>
+                <h:commandButton value="edit" action="#{productListBean.edit(product)}" />
+            </h:column>
         </h:dataTable>
 
     </ui:define>
