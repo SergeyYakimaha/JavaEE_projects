@@ -88,7 +88,7 @@ public class StudentServiceRestImpl {
 
     @GET
     @Path("student/{id}")
-    @Produces({MediaType.APPLICATION_XML})
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Student getStudentList(@PathParam("id") int id) {
         College college = new College();
         return college.gerStudentById(id);
