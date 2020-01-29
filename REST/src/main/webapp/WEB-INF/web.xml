@@ -21,7 +21,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Jersey REST Service</servlet-name>
-        <url-pattern>/shop/*</url-pattern>
+<!--        <url-pattern>/shop/*</url-pattern>-->
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

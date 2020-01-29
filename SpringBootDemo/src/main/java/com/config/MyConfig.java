@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyConfig {
 
-//    @Bean
-//    public User user() {
-//        User user = new User();
-//        user.setId(1);
-//        user.setName("Ivan");
-//        return user;
-//    }
+    @Bean
+    public User user() {
+        User user = new User();
+        user.setId(1);
+        user.setName("Configuration Bean");
+        return user;
+    }
 
 }

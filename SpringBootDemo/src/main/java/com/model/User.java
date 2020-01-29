@@ -3,12 +3,13 @@ package com.model;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class User {
     private long id;
     private String name;
 
     public User() {
+        this.id = 10;
         this.name = "Component Bean";
     }
 
