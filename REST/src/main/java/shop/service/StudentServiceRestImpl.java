@@ -95,9 +95,26 @@ public class StudentServiceRestImpl {
     }
 
     @GET
-    @Path("student/response/{id}")
+    @Path("student/response_all/{id}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getStudentByIdFromResponseAllFormat(@PathParam("id") int id) {
+        College college = new College();
+        return Response.ok().entity(college.gerStudentById(id)).build();
+    }
+
+    @GET
+    @Path("student/response_xml/{id}")
     @Produces({MediaType.APPLICATION_XML})
-    public Response getStudentByIdFromResponce(@PathParam("id") int id) {
+    public Response getStudentByIdFromResponseXML(@PathParam("id") int id) {
+        College college = new College();
+        return Response.ok().entity(college.gerStudentById(id)).build();
+    }
+
+    @GET
+    @Path("student/response_json/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getStudentByIdFromResponseJSON(@PathParam("id") int id) {
         College college = new College();
         return Response.ok().entity(college.gerStudentById(id)).build();
     }
