@@ -2,6 +2,8 @@ package net.proselyte.jwtappdemo.security;
 
 import lombok.extern.slf4j.Slf4j;
 import net.proselyte.jwtappdemo.model.User;
+import net.proselyte.jwtappdemo.security.jwt.JwtUser;
+import net.proselyte.jwtappdemo.security.jwt.JwtUserFactory;
 import net.proselyte.jwtappdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +30,10 @@ public class JwtUserDetailService implements UserDetailsService {
             throw new UsernameNotFoundException("User with username: " + username + " not found");
         }
 
-        return null;
+        JwtUser jwtUser = JwtUserFactory.create(user);
+
+        log.info("IN loadUserByUserName - user with username: {} successfully loaded", username);
+
+        return jwtUser;
     }
 }
