@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
 //@SpringBootApplication
-@ComponentScan({"com.model","com.example", "com.config"})
+@ComponentScan({"com.entity","com.example", "com.config"})
 //@Configuration
 @EnableAutoConfiguration
 public class SpringBootDemoApplication {
